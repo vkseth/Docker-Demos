@@ -1,0 +1,22 @@
+Demo
+
+Create one directory on the local machine 
+
+mkdir demo-directory
+cd demo-directory 
+echo "local data to connet inside the container" > index.html
+
+Attach to container 
+
+docker container run -itd -p 8081:80 -v $PWD:/usr/share/nginx/html nginx 
+
+Update the local volume and it will update immediately 
+
+echo "local data to connet inside the container-added additional data" > index.html
+
+
+docker container run -itd -v $PWD:/tmp/ ubuntu
+
+
+To attach read only 
+docker run -v volume-name:/path/in/container:ro my/image

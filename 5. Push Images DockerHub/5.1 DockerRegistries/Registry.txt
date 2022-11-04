@@ -1,0 +1,120 @@
+Docker Registry is an application that manages storing and delivering Docker container images
+
+Note - We can install it on other machine like ubuntu or on the same machine 
+
+
+Step 
+
+Install docker 
+Install docker registry offical image and update docker deamon file 
+create dockerfile and docker image 
+Tag your image 
+push image to docker registry 
+Remove all images: 
+Restore image from docker registry 
+
+
+
+
+
+Lab
+
+
+Step 1 - Install docker and give user permission 
+
+sudo yum install docker -y 
+sudo service docker start 
+sudo usermod -aG docker current-user-name-here  
+
+log off and logn back 
+
+To verify docker running from current user 
+
+docker ps
+
+
+Step 2 - Install docker registry offical image 
+
+To check current images 
+docker images
+
+To install registry container 
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+
+Verify docker registry container image 
+docker images
+
+Verify the container running or not 
+docker ps
+
+Create one file under below location 
+
+sudo nano /etc/docker/daemon.json
+
+{ "insecure-registries":["privateIPofUbuntumachine:5000"] }
+
+make sure to restart the docker service 
+
+sudo service docker stop 
+sudo service docker start 
+
+Step - create dockerfile and docker image
+
+nano dockerfile
+
+FROM ubuntu
+
+Create docker image 
+
+docker build -t ubuntu . 
+
+
+Step - Tag your image 
+
+docker tag ubuntu 172.31.95.43:5000/vickyseth/ubuntu:latest
+
+ubuntu=local machine image name 
+172.31.95.43:5000 = privateIPregistryserver with 5000 port ( make sure it open )
+vickyseth/ubuntu:latest = new name of image
+
+Verify 
+docker images 
+
+
+Step - push the image to registory 
+
+docker push 172.31.95.43:5000/vickyseth/ubuntu:latest
+
+To Verify if image pushed successfully or not 
+
+curl 172.31.95.43:5000/v2/_catalog 
+
+#you will get reply like below 
+
+{"repositories":["vickyseth/apache"]}
+
+
+
+Step - Remove all images:
+
+docker image ls -aq | xargs docker rmi -f
+
+
+Step - Restore image from docker registry 
+
+pull the image from docker registry 
+
+docker pull regiryserverIP:5000/imagename
+
+for example
+#docker pull 172.31.95.43:5000/vickyseth/apache:latest
+
+
+
+
+
+
+Important command 
+
+curl 172.31.95.43:5000/v2/_catalog 
+

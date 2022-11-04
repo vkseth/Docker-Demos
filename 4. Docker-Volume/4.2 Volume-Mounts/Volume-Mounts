@@ -1,0 +1,76 @@
+-- Volume Mounts --
+
+- Volume mounts allow us to create a directory which is managed by Docker 
+and it also allow us to share data across containers.
+- Containers can write to the volume 
+- data persist even after the container is stopped or removed.
+
+
+Create and inspect a volume:
+
+docker volume create shared-vol
+docker volume ls
+docker volume inspect shared-vol  # look for "Mountpoint"
+
+Run couple of containers with the mount point.
+
+docker run -it --name=foo1 --mount source=shared-vol,target=/tmp/shared ubuntu
+docker run -it --name=foo2 --mount source=shared-vol,target=/tmp/shared ubuntu
+docker run -it --name=foo3 --mount source=shared-vol,target=/tmp/shared ubuntu
+
+Source = volume Name 
+target = mount name inside the container 
+
+Here data is shared among all the three host 
+
+
+To Remove the volume 
+
+docker volume rm shared-vol
+docker volume prune 
+
+To attach read only 
+
+docker run --mount source=volume-name,destination=/path/in/container,readonly my/image
+
+
+
+
+
+Another example Database
+
+docker container run -itd --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=true mysql
+
+docker volume ls 
+docker volume inspect  volumeid or name
+
+Now login inside the container and create some database 
+
+docker container exec -it containerid bash
+
+mysql
+
+# Now create some database 
+Create database test1;
+Create datebase test2;
+Create database test3;
+
+Exit 
+
+Remove the container 
+
+docker container rm -f containername or id
+
+Now create a new container with volume attach 
+
+docker container run -itd -v volumeid:/var/lib/mysql mysql
+
+Now login inside the container and check database 
+
+docker container exec -it containerid bash
+
+mysql
+show databases;
+
+
+

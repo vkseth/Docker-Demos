@@ -1,0 +1,79 @@
+
+
+Steps Involve
+
+Parameter Store - to store secret 
+Docker installation
+Configure AWS CLI
+get parameter value 
+create shell script 
+ 
+
+Step 1   - Parameter Store - to store secret 
+
+Go to AWS account - search for Parameter store - create parameter 
+
+for example ( creating db password )
+Name - /my-app/dev/db_pass 
+Tier - standard 
+Type - string/StringList/SecureString
+Data type - text 
+value - enter secret value here   -- my-secret-pw
+Tags - optional 
+
+Create parameter 
+
+
+Step 2 - Docker installation
+
+Need one linux machine to install docker 
+
+sudo yum install docker -y
+sudo service docker start
+sudo usermod -aG docker ec2-usermod
+logoff and login 
+
+verify = docker ps 
+
+
+
+Step3 - Configure AWS CLI 
+
+Go to AWS account - IAM - create user - in permission - add ssm permission 
+
+To configure user on linux machine 
+
+aws configure 
+AWS Access Key ID
+AWS Secret Access Key
+Default region name
+Default output format
+
+
+Step4 - get parameter value
+
+aws ssm get-parameters --names /my-app/dev/db_pass  --with-decryption --query "Parameters[*].{Value:Value}" --output text --region ap-south-1
+
+
+Step5 - create shell script 
+
+nano pass.sh
+
+#!/bin/bash
+thekey="/my-app/dev/db_pass"
+pass=`aws ssm get-parameters --names $thekey --with-decryption --query "Parameters[*].{Value:Value}" --output text --region ap-south-1`
+
+chmod +x pass.sh
+
+Run 
+./pass.sh
+
+
+Step 6 - run the container 
+
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=$pass -d mysql
+
+
+
+
+

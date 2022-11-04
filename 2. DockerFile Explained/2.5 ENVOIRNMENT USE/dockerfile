@@ -1,0 +1,16 @@
+FROM ubuntu:16.04
+RUN apt-get update && apt-get install -y tree
+RUN touch /tmp/filename.txt
+RUN touch /tmp/filename.txt
+ENV NAME Vicky
+ENV PASS 123
+RUN apt-get update && apt-get install -y openssh-server && apt-get install -y python
+RUN useradd -d /home/Vicky -g root -G sudo -m -p $(echo “$PASS” | openssl passwd -1 -stdin) $NAME
+
+
+
+#docker image build -t name .
+#docker images
+#docker container run -itd name 
+#docker ps
+#docker container exec -it containerID bash

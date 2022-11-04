@@ -1,0 +1,92 @@
+Steps 
+
+Login to dockerhub 
+Build docker Image 
+Create one index.html on local machine or in the same directory where dockerfile is 
+Build docker image 
+Run the container 
+Push image to dockerhub 
+Verify 
+Pull the image 
+
+
+Step 1. Login to Dockerhub 
+
+Create one account in dockerhub
+
+Go to the machine where you have docker installed 
+
+Now to login to dockerhub 
+docker login
+
+[ec2-user@ip-172-31-24-0 ~]$ docker login -u vickyseth9933
+Password: 
+WARNING! Your password will be stored unencrypted in /home/ec2-user/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+
+Step 2. Build docker Image
+
+mkdir docker-demo 
+cd docker-demo
+nano dockerfile   #enter below content 
+
+FROM ubuntu
+# File Author / Maintainer
+MAINTAINER vickyseth
+# Update the repository sources list
+RUN apt-get update
+# Install and run apache
+RUN apt-get install -y apache2 && apt-get clean
+#copy 
+COPY index.html /var/www/html/index.html
+EXPOSE 80
+CMD apachectl -D FOREGROUND
+
+
+
+Step 3. On local machine where you have dockerfile create one index.html 
+
+#in same directory where you have dockerfile 
+
+nano index.html
+Hello World
+
+
+Step 4. Build docker image 
+
+docker build -t vickyseth9933/apache:1 .
+
+To verify 
+
+docker images 
+
+
+Step 5. Run the container 
+
+docker run -itd -p 8080:80 vickyseth9933/apache:1
+
+
+Step 6. Push image to dockerhub 
+
+docker push imagename-with-tag
+
+
+step 7. Verify 
+
+login to dockerhub 
+go to your repository and check image is there or not 
+
+
+Step 8. pull the image  
+
+login to dockerhub 
+go to your repository and check image which need to pull 
+look for docker pull command 
+
+docker pull imagename 
+
+
