@@ -11,4 +11,7 @@
 | docker pull image-info                                         | Pull the image from docker hub repository  |
 | docker pull vickyseth9933/springboot-helloworld-rest-api:2.0.0 | Pull the image from docker hub repository  |
 | docker login -u username -p password                           | Login to docker hub                        |
-| docker logout                                                  | Logout from docker hub                     
+| docker logout                                                  | Logout from docker hub                     |
+| docker version                                                 | show the docker version information        |
+| docker top container-id or name                                | display the running process                |
+|                                                                |                                           
