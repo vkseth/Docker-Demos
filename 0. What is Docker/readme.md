@@ -2,16 +2,18 @@
 ==============
 
 
-__Docker__ is a **platform** that lets you package, develop, and run applications in containers.
+__Docker__ is a platform that lets you package, develop, and run applications in containers.
 > Docker is a software platform that allows you to build, test, and deploy applications quickly
 Docker packages software into standardized units called containers that have everything the software needs to run including libraries, system tools, code, and runtime. 
 Using Docker, you can quickly deploy and scale applications into any environment and know your code will run.
+
 A container is a virtual environment on top of the OS kernel to capture all of its software - libraries, dependencies, etc
 
-Kernal – is core software running on top of the OS that handles very low functionality like? 
-Allocating memory 
-Sending files to storage 
-Running application processes 
+__Kernal__ – is core software running on top of the OS that handles very low functionality like? 
+
+> Allocating memory 
+> Sending files to storage 
+> Running application processes 
 
 In below image all the container share same kernel yet each container has its own space on top of the kernel in OS
 So within the space container can run its own private code
