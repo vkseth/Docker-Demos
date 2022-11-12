@@ -3,4 +3,14 @@
 Ref for [useful sites](https://www.free-css.com).
 
 
-My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+ Markup : * Bullet list
+              * Nested bullet
+                  * Sub-nested bullet etc
+          * Bullet list item 2
+
+-OR-
+
+ Markup : - Bullet list
+              - Nested bullet
+                  - Sub-nested bullet etc
+          - Bullet list item 2 
