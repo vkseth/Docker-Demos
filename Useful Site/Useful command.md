@@ -1,3 +1,4 @@
-| commands   Description                 |
-| :------------------------------------- |
-| docker ps  List all containers running |
+| commands  | Description                 |
+| :-------- | --------------------------- |
+| docker ps | List all containers running |
+|           |                             |
