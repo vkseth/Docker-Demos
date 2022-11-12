@@ -1,12 +1,13 @@
 
 
-| commands                                            |             Description
-|                                                   |
-| docker ps                                         |       List all containers running
-| docker ps -a                                      |      List all containers stopped, running
-| docker stop container-id                          |   Stop the container which is running
-|                                                   |
-
+| | commands                                          |             Description                   |
+| :---------------------------------------------------------------------------------------------- |
+| |                                                   |                                           |
+| | docker ps                                         |       List all containers running         |
+| | docker ps -a                                      |      List all containers stopped, running |
+| | docker stop container-id                          |   Stop the container which is running     |
+| |                                                   |                                           |
+|                                                                                                 |
 
 
 
