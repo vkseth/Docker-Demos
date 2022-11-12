@@ -11,9 +11,9 @@ A container is a virtual environment on top of the OS kernel to capture all of i
 
 __Kernal__ – is core software running on top of the OS that handles very low functionality like? 
 
-> Allocating memory 
-> Sending files to storage 
-> Running application processes 
+Allocating memory 
+Sending files to storage 
+Running application processes 
 
 In below image all the container share same kernel yet each container has its own space on top of the kernel in OS
 So within the space container can run its own private code
