@@ -1,4 +1,4 @@
-What is Docker? 
+**What is Docker?** 
 
 Docker is a platform that lets you package, develop, and run applications in containers.
 Docker is a software platform that allows you to build, test, and deploy applications quickly
