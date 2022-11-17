@@ -1,4 +1,4 @@
-#/bin/bash 
+#!/bin/bash 
 echo "checking docker install or not"
 VERIFY=`docker --version` 
 if [ $? == 0 ]; 
