@@ -2,19 +2,13 @@
 
 docker pull nginx # download the image from docker hub
 
-# run the image 
-
 docker run nginx   # here container run but no port mapping 
 
-# run the container with port mapping 
-
-docker run -d - p 8080:80 nginx 
+docker run -d - p 8080:80 nginx  # port mapping
 
 -d = detach 
-
 8080 = container port 
 80 = host port 
-
 
 ---------------
 
