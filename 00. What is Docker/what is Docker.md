@@ -11,7 +11,7 @@ Using Docker, you can quickly deploy and scale applications into any environment
 > A container is a virtual environment on top of the OS kernel to capture all of its software - libraries, dependencies, etc
 
 # Kernal
-> is core software running on top of the OS that handles very low functionality like? 
+is core software running on top of the OS that handles very low functionality like? 
 
     Allocating memory 
     Sending files to storage 
@@ -29,10 +29,10 @@ In image all the container share same kernel yet each container has its own spac
 
 A More lightweight approach than virtual machines to isolated coding and project environments.
 
-Portability to the major architectures and operating systems – let suppose if you have your application running in container on MAC same application can run on Linux or windows without any code change only docker application to be there 
+> Portability to the major architectures and operating systems – let suppose if you have your application running in container on MAC same application can run on Linux or windows without any code change only docker application to be there 
 
 
-Docker Architecture
+# Docker Architecture
 
 Docker Daemon – it listens for docker API requests and manages docker objects, docker objects such as images container, network and volume , it also communicates with other daemon to manage docker services.
 
